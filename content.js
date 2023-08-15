@@ -15,8 +15,9 @@ function replaceText(node) {
 }
 
 browser.storage.local.get('isEnabled', function(data) {
-    if (data.isEnabled) {
+    if (data.isEnabled !== undefined ? data.isEnabled : true) {
         replaceText(document.body);
         browser.storage.local.set({replacementCount: replacementCount});
     }
 });
+
